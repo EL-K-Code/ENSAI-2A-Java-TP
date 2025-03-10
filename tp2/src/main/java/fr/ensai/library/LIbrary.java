@@ -4,27 +4,33 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LIbrary {
     private String name;
-    private List<Book> books;
+    private List<Item> items;
 
-    public LIbrary(String name, List<Book> books) {
+    public LIbrary(String name) {
         this.name = name;
-        this.books = books;
+        this.items = new ArrayList<Item>();
     }
 
-    public void AddBook(Book book) {
-        this.books.add(book);
+    public LIbrary(String name, List<Item> items) {
+        this.name = name;
+        this.items = items;
     }
 
-    public void DisplayBoos() {
-        if (books.size() > 0) {
+    public void AddItem(Item item) {
+        items.add(item);
+    }
 
-            for (Book livre : books) {
+    public void DisplayBooks() {
+        if (items.size() > 0) {
+
+            for (Item livre : items) {
                 System.out.println(livre.toString());
             }
         } else {
@@ -54,13 +60,13 @@ public class LIbrary {
                     // Check if author already exists in the map
                     Author author = authors.get(authorName);
                     if (author == null) {
-                        author = new Author(authorName);
+                        author = new Author(authorName, 12, null);
                         authors.put(authorName, author);
                         System.out.println(author.toString());
                     }
                     Book book = new Book(isbn, title, author, year, pageCount);
 
-                    this.addIem(book);
+                    this.AddItem(book);
                 }
             }
         } catch (

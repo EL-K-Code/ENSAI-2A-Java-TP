@@ -1,5 +1,8 @@
 package fr.ensai.library;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -14,5 +17,14 @@ public class Main {
                 423);
 
         System.out.println(fellowshipOfTheRing.toString());
+        Author SeydouB = new Author("Seydou Badian", 81, "MLI");
+        Book book1 = new Book("123-09-12628", "Sous l'orage", SeydouB, 1234, 234);
+        List<Book> listeDeLivres = new ArrayList<Book>();
+        listeDeLivres.add(book1);
+        LIbrary Ax = new LIbrary("Bibliothèque U de la Kozah", listeDeLivres);
+        Ax.DisplayBooks();
+        Ax.loadBooksFromCSV("books.csv");
+        Ax.DisplayBooks();
+
     }
 }
